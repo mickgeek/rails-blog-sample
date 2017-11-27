@@ -1,0 +1,36 @@
+<% content_for(:title) do %>
+  Restore password &middot;
+<% end %>
+
+<h1>Restore password</h1>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <% if resource.errors.any? %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <%= pluralize(resource.errors.count, "error") %> prohibited this <%= resource_name %> from being saved:
+      </div>
+
+      <div class="panel-body">
+        <ul>
+          <% resource.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= button_tag type: "submit", class: "btn btn-primary btn-lg btn-block" do %>
+      Send instructions
+    <% end %>
+  </div>
+<% end %>
+
+<%= render "users/shared/links" %>

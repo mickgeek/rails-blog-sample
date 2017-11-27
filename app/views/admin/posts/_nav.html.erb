@@ -1,0 +1,9 @@
+<ul class="nav nav-pills">
+  <% if current_page?(admin_posts_path) %>
+    <li class="active"><%= link_to "List", admin_posts_path %></li>
+  <% else %>
+    <li><%= link_to "<span class=\"glyphicon glyphicon-chevron-left\"></span> List".html_safe, admin_posts_path %></li>
+  <% end %>
+
+  <li class="<% if current_page?(new_admin_post_path) %>active<% end %>"><%= link_to "Add new", new_admin_post_path %></li>
+</ul><br>

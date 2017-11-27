@@ -1,0 +1,32 @@
+<% content_for(:title) do %>
+  Archive &middot;
+<% end %>
+
+<% content_for(:breadcrumbs) do %>
+  <li><%= link_to "Blog", posts_path %></li>
+  <li>Archive</li>
+<% end %>
+
+<div class="post-archive">
+  <h1>Archive</h1>
+
+  <% if @years.any? %>
+    <% @years.each do |year, posts| %>
+      <h3><%= year %></h3>
+
+      <ul>
+        <% posts.each do |post| %>
+          <li>
+            <div class="date">
+              <%= post.published_date.strftime("%b %d") %>
+            </div>
+
+            <%= link_to post.title.html_safe, post_path(post) %>
+          </li>
+          <% end %>
+      </ul>
+    <% end %>
+  <% else %>
+    <p>No posts yet.</p>
+  <% end %>
+</div>

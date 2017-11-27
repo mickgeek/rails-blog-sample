@@ -1,0 +1,26 @@
+<% content_for(:breadcrumbs) do %>
+  <li>Blog</li>
+<% end %>
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <div class="post">
+      <h2><%= link_to post.title, post_path(post) %></h2>
+
+      <div class="date">
+        <span class="glyphicon glyphicon-time"></span>
+        <%= post.published_date.strftime("%B %d, %Y") %>
+      </div>
+
+      <p><%= post.snippet.html_safe %></p>
+
+      <%= link_to "Read more &rarr;".html_safe, post_path(post) %>
+    </div>
+
+    <%= paginate @posts %>
+  <% end %>
+<% else %>
+  <h1>Blog</h1>
+
+  <p>No posts yet.</p>
+<% end %>

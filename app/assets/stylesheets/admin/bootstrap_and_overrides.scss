@@ -1,0 +1,28 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables".
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// If you'd like to override bootstrap's own variables, you can do so here as well.
+// See http://getbootstrap.com/css/#less-variables for their names and documentation.
+//
+// Example:
+// @link-color: #ff0000;
+a {
+  .glyphicon {
+    margin: 0 3px;
+  }
+}
+
+.page-header {
+  margin-top: 0;
+}
+
+.alert {
+  margin-top: 10px;
+}
+
+.panel {
+  ul {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,10 @@
+<% content_for(:title) do %>
+  Add new user &middot;
+<% end %>
+
+<div class="page-header">
+  <h1>Add new user</h1>
+</div>
+
+<%= render 'nav' %>
+<%= render 'form', user: @user, form_url: admin_users_path %>

@@ -1,0 +1,28 @@
+@import "bootstrap/variables";
+
+html,
+body {
+  height: 100%;
+}
+
+footer {
+  margin: 40px 0 20px;
+}
+
+/* general */
+.sidebar-nav {
+  margin-top: 15px;
+
+  h3 {
+    margin: 10px 0 15px;
+  }
+  ul {
+    padding-left: 25px;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    &:first-child {
+      margin-bottom: 40px;
+    }
+  }
+}

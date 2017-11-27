@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= yield(:title) %>Administration</title>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag "/public/apple-touch-icon-precomposed.png", :rel => "apple-touch-icon-precomposed", :type => "image/png" %><!-- 57×57px -->
+    <%= favicon_link_tag "/public/favicon.ico", :rel => "shortcut icon" %><!-- 32×32px -->
+    <%= stylesheet_link_tag "admin", :media => "all" %>
+    <%= javascript_include_tag "admin" %>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="<%= admin_root_path %>">Rails Blog Sample</a>
+        </div>
+
+        <div id="navbar-main-collapse" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to "<span class=\"glyphicon glyphicon-home\"></span> Open site".html_safe,
+              root_path, target: "_blank" %></li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span> Sign out".html_safe,
+              destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="well sidebar-nav">
+            <h3>Navigation</h3>
+
+            <ul>
+              <li><%= link_to "Dashboard", admin_root_path %></li>
+              <li>
+                Blog
+                <ul>
+                  <li><%= link_to "Posts", admin_posts_path %></li>
+                  <li><%= link_to "Tags", admin_tags_path %></li>
+                </ul>
+              </li>
+              <li><%= link_to "Pages", admin_pages_path %></li>
+              <li><%= link_to "Users", admin_users_path %></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+      </div>
+
+      <footer>
+        <p>&copy; Rails Blog Sample, <%= Time.current.year %></p>
+      </footer>
+    </div>
+  </body>
+</html>

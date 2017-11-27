@@ -1,0 +1,20 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables".
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// If you'd like to override bootstrap's own variables, you can do so here as well.
+// See http://getbootstrap.com/css/#less-variables for their names and documentation.
+//
+// Example:
+// @link-color: #ff0000;
+.breadcrumb {
+  margin-top: -20px;
+  margin-bottom: 5px;
+  background-color: #fff;
+  border: 0;
+  border-radius: 0;
+}
+
+.alert {
+  margin-top: 10px;
+}

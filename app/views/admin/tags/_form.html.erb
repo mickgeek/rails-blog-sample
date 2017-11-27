@@ -1,0 +1,32 @@
+<%= form_with(model: tag, url: form_url, local: true) do |form| %>
+  <% if tag.errors.any? %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:
+      </div>
+
+      <div class="panel-body">
+        <ul>
+          <% tag.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :name, class: "control-label" %>
+        <%= form.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= button_tag type: "submit", class: "btn btn-primary" do %>
+      Save
+    <% end %>
+  </div>
+<% end %>

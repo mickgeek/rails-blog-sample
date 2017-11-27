@@ -1,0 +1,70 @@
+<%= form_with(model: post, url: form_url, local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:
+      </div>
+
+      <div class="panel-body">
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :title, class: "control-label" %>
+        <%= form.text_field :title, autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="form-group">
+        <%= form.label :body, class: "control-label" %>
+        <%= cktext_area :post, :body, ckeditor: { toolbar: "mini", height: 400 } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="form-group">
+        <%= form.label :snippet, class: "control-label" %>
+        <%= cktext_area :post, :snippet, ckeditor: { toolbar: "mini", height: 200 } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :tags, class: "control-label" %>
+        <%= form.collection_select :new_tag_ids, Tag.order(name: :asc), :id, :name,
+          { selected: post.post_tags.pluck(:tag_id) }, { multiple: true, class: "form-control" } %>
+        <p class="help-block">Hold down "Ctrl", or "Command" on a Mac, for multiple select.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :status, class: "control-label" %>
+        <%= form.select :status, post.choices(:status), { include_blank: "-" }, { class: "form-control" } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= button_tag type: "submit", class: "btn btn-primary" do %>
+      Save
+    <% end %>
+  </div>
+<% end %>

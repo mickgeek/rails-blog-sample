@@ -1,0 +1,53 @@
+<%= form_with(model: user, url: form_url, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:
+      </div>
+
+      <div class="panel-body">
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :email, class: "control-label" %>
+        <%= form.text_field :email, autofocus: true, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :password, class: "control-label" %>
+        <% if user.minimum_password_length %>
+          <em>(<%= user.minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= form.password_field :password, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= form.label :password_confirmation, class: "control-label" %>
+        <%= form.password_field :password_confirmation, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= button_tag type: "submit", class: "btn btn-primary" do %>
+      Save
+    <% end %>
+  </div>
+<% end %>

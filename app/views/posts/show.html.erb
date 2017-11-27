@@ -1,0 +1,27 @@
+<% content_for(:title) do %>
+  <%= @post.title %> &middot;
+<% end %>
+
+<% content_for(:breadcrumbs) do %>
+  <li><%= link_to "Blog", posts_path %></li>
+  <li><%= @post.title %></li>
+<% end %>
+
+<div class="post">
+  <h1><%= @post.title %></h1>
+
+  <div class="date">
+    <span class="glyphicon glyphicon-time"></span>
+    <%= @post.published_date.strftime("%B %d, %Y") %>
+  </div>
+
+  <p><%= @post.body.html_safe %></p>
+
+  <% if !@post.tags.blank? %>
+    <div class="tags">
+      <% @post.tags.each do |tag| %>
+        <%= link_to tag.name, posts_by_tag_path(tag), :class => "btn btn-info btn-xs" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,41 @@
+<% content_for(:title) do %>
+  Tags &middot;
+<% end %>
+
+<div class="page-header">
+  <h1>Tags</h1>
+</div>
+
+<%= render 'nav' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @tags.empty? %>
+      <tr>
+        <td colspan="3">There are no records.</td>
+      </tr>
+    <% else %>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td><%= tag.id %></td>
+          <td><%= link_to tag.name, edit_admin_tag_path(tag) %></td>
+          <td class="text-center">
+            <%= link_to "<span class=\"glyphicon glyphicon-remove\"></span>".html_safe, admin_tag_path(tag),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @tags %>

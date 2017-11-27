@@ -1,0 +1,80 @@
+@import "bootstrap/variables";
+
+html,
+body {
+  height: 100%;
+}
+
+form {
+  margin-top: 20px;
+}
+
+footer {
+  margin: 40px 0 20px;
+}
+
+/* general */
+.portlet {
+  margin-bottom: 20px;
+  padding: 10px 0 10px 15px;
+  border-left: solid 5px #ccc;
+
+  &:first-child {
+    margin-top: 20px;
+  }
+  h3 {
+    margin: 0 0 20px;
+  }
+  ul {
+    margin: 0 0 0 20px;
+    padding: 0;
+  }
+
+  @media (max-width: $screen-sm-max) {
+    &:first-child {
+      display: inline-block;
+    }
+  }
+}
+
+/* pages */
+.page {
+  margin-bottom: 20px;
+}
+
+/* feedback */
+.feedback {
+  margin-bottom: 20px;
+}
+
+/* blog */
+.blog {
+  .post {
+    margin-bottom: 20px;
+
+    .date {
+      color: #999;
+      margin-bottom: 20px;
+    }
+    .tags {
+      margin-top: 20px;
+    }
+  }
+
+  .post-archive {
+    ul {
+      margin-left: 40px;
+      padding: 0;
+      list-style: none;
+
+      li {
+        margin-bottom: 5px;
+
+        .date {
+          display: inline-block;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}

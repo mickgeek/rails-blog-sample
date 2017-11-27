@@ -1,0 +1,9 @@
+<ul class="nav nav-pills">
+  <% if current_page?(admin_tags_path) %>
+    <li class="active"><%= link_to "List", admin_tags_path %></li>
+  <% else %>
+    <li><%= link_to "<span class=\"glyphicon glyphicon-chevron-left\"></span> List".html_safe, admin_tags_path %></li>
+  <% end %>
+
+  <li class="<% if current_page?(new_admin_tag_path) %>active<% end %>"><%= link_to "Add new", new_admin_tag_path %></li>
+</ul><br>
